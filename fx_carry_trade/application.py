@@ -1,4 +1,4 @@
-# Part 1: Libraries & Initialization
+# Video 2: Libraries & Initialization
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,7 +9,7 @@ best_trade, all_scores = pd.DataFrame(), pd.DataFrame()
 lr, xr = pd.read_csv("lending_rates.csv"), pd.read_csv("all_exchange_rates.csv")
 
 
-# Part 2: Useful Functions
+# Video 3: Useful Functions
 
 def getScore(lr1, lr2, xr0, xr1): return ((1 + lr2) * xr0 / xr1) - (1 + lr1)
 def getLR(currency, time): return lr[currency][time] / 100
@@ -18,7 +18,7 @@ def getXR(cur1, cur2, time):
     else: return 1 / xr[cur1][time] if cur2 == "USD" else xr[cur2][time] / xr[cur1][time]
 
 
-# Part 3: Find the Best Trade
+# Video 4: Yearly Best Trade
 
 def getBestTrade(time, local_bt):
     max_i, max_j, max_score, pct_return, scores = "", "", 0, 0, []
@@ -36,7 +36,7 @@ def getBestTrade(time, local_bt):
                                         columns=["Year", "Short", "Long", "Return"]), ignore_index=True)
 
 
-# Part 4: Results Summarization
+# Video 5: Results Summarization
 
 def genDataStr():
     data_str = "<table border=1><tr><th>Year</th><th>Short</th><th>Long</th><th>% Return</th></tr>"
