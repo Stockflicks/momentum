@@ -5,7 +5,11 @@ import matplotlib.pyplot as plt
 from flask import Flask, render_template
 
 def Rotationalmomentum_12_month(file_xlsx, capital):
+    
+    # Video 2: Data Preparation
     close_price_etf_df = pd.read_excel(file_xlsx)
+    
+    # Video 3: Data Cleaning
     close_price_etf_df.columns = close_price_etf_df.iloc[0]
     close_price_etf_df = close_price_etf_df.loc[423:]
     close_price_etf_df = close_price_etf_df.set_index('Date')
@@ -16,9 +20,10 @@ def Rotationalmomentum_12_month(file_xlsx, capital):
     rolling_total_return_month_12_df = monthly_total_return_df.rolling(12).sum() # calculate rolling total return for 12 months
     rolling_total_return_month_12_df = rolling_total_return_month_12_df[11:]
     
+    
+    # Video 4: Results Summarization
     ans_list = [capital] # create a list and put monthly return inside
     time_list = [rolling_total_return_month_12_df.index[0]] # create a time list to record the time
-    # Main Algorithm
     for i in range(len(rolling_total_return_month_12_df)-1):
         updated_capital = 0
         for j in range(3):
