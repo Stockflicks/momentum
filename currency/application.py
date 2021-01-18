@@ -1,4 +1,4 @@
-# PART 1: IMPORT LIBRARIES & DEFINE CONSTANTS
+# VIDEO 2: IMPORT LIBRARIES & DEFINE CONSTANTS
 
 import pandas as pd
 import math
@@ -20,7 +20,7 @@ for current_year in range(start_year, end_year + 1):
         if current_year == end_year and current_month == end_month:
             break
 
-# PART 2: PREPARE THE DATA & READ CSVs
+# VIDEO 3: PREPARE THE DATA & READ CSVs
 
 lr = pd.read_csv("data/lending_rates.csv")
 for currency in currencies:
@@ -28,7 +28,7 @@ for currency in currencies:
     xr[currency] = pd.read_csv("data/" + currency + "_monthly.csv")
 
 
-# PART 3: DEFINE FUNCTIONS I
+# VIDEO 4: DEFINE FUNCTIONS I
 
 
 # Get the lending rate of a given currency in a given time
@@ -51,7 +51,7 @@ def getExchangeRate(currency_1, currency_2, year, month):
         return xr2.loc[xr2["MONTH"] == month].item() / xr1.loc[xr1["MONTH"] == month].item()
 
 
-# PART 4: DEFINE FUNCTIONS II
+# VIDEO 5: DEFINE FUNCTIONS II
 
 
 # Add one month to a given year and month
@@ -82,7 +82,7 @@ def getGoLongCurrency(year, month):
     return [long_currency, long_growth]
 
 
-# PART 5: THE MONTHLY REBALANCE FUNCTION
+# VIDEO 6: THE MONTHLY REBALANCE FUNCTION
 
 
 def monthlyRebalance(year, month, cumulative_profit):
@@ -112,7 +112,7 @@ def monthlyRebalance(year, month, cumulative_profit):
 
 monthlyRebalance(start_year, start_month, 0)
 
-# PART 6: DEMONSTRATE THE RESULTS IN A FLASK WEB APP
+# VIDEO 7: DEMONSTRATE THE RESULTS IN A FLASK WEB APP
 
 plot_df = pd.DataFrame({"Date": all_dt, "Cumulative Profit": all_cp})
 plot_df["Date"] = pd.to_datetime(plot_df["Date"], format="%Y%m")
